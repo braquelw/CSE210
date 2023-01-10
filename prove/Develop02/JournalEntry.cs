@@ -2,14 +2,20 @@ using System;
 
 public class JournalEntry
 {
+    public string _dateOfEntry;
     public string _prompt;
-    public string _answer;
-    public string _date;
+    public string _response;
 
-    public void Display()
+    public JournalEntry()
     {
-        Console.WriteLine($"{_date}");
-        Console.WriteLine($"{_prompt}");
-        Console.WriteLine($"{_answer}");
+
+    }
+
+    public void DisplayEntry()
+    {
+        Console.WriteLine($"Date: {_dateOfEntry}");
+        Console.WriteLine($"Prompt: {_prompt}");
+        Console.WriteLine($"Response: {_response}");
+        Console.WriteLine();
     }
 }
