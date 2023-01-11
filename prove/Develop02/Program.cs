@@ -9,6 +9,7 @@ class Program
         // variables
         int user_choice = 0;
 
+        // Lists
         List<JournalEntry>_entries = new List<JournalEntry>();
         List<string> _oldEntries = new List<string> ();
 
@@ -33,6 +34,7 @@ class Program
             // If user chooses 1. Write
             if (user_choice == 1)
             {
+                // Generate a Journal Prompt and get the User Response
                 string entryPrompt = PromptGenerator();
                 Console.WriteLine(entryPrompt);
                 string entryResponse = UserResponse();
@@ -49,10 +51,12 @@ class Program
             // If user chooses 2. Display
             if (user_choice == 2)
             {
+                // Display Old Entries
                 foreach (var a in _oldEntries)
                 {
                     Console.WriteLine(a);
                 }
+                // Display New Entries
                 foreach (var i in _entries)
                 {
                     i.DisplayEntry();
@@ -66,6 +70,7 @@ class Program
                 Console.Write("What is the name of the text file you want to load? ");
                 string loadFile = Console.ReadLine();
                 Console.WriteLine();
+                // Add user file to a string to be manipulated
                 string[] lines = System.IO.File.ReadAllLines(loadFile);
 
                 foreach (string line in lines)
@@ -81,6 +86,7 @@ class Program
                 Console.Write("What is the name of the text file you want to save? ");
                 string saveFile = Console.ReadLine();
                 Console.WriteLine();
+                // Save Old and New Entries to the new file
                 using (StreamWriter outputFile = new StreamWriter(saveFile))
                 {
                     foreach (var a in _oldEntries)
@@ -150,6 +156,7 @@ class Program
 
         static JournalEntry AddJournalEntry(string entryDate, string entryPrompt, string entryResponse)
         {
+            // Create the Journal Entry as a Class
             JournalEntry entry = new JournalEntry();
             entry._dateOfEntry = entryDate;
             entry._prompt = entryPrompt;
