@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 class Program
 {
@@ -9,6 +10,7 @@ class Program
         int user_choice = 0;
 
         List<JournalEntry>_entries = new List<JournalEntry>();
+        List<string> _oldEntries = new List<string> ();
 
         // Welcome the user
         Console.WriteLine();
@@ -47,7 +49,11 @@ class Program
             // If user chooses 2. Display
             if (user_choice == 2)
             {
-                foreach (JournalEntry i in _entries)
+                foreach (var a in _oldEntries)
+                {
+                    Console.WriteLine(a);
+                }
+                foreach (var i in _entries)
                 {
                     i.DisplayEntry();
                 }
@@ -56,22 +62,37 @@ class Program
             // If user chooses 3. Load
             if (user_choice == 3)
             {
-                foreach (JournalEntry i in _entries)
+                // Ask the user for the name of the file they want to load
+                Console.Write("What is the name of the text file you want to load? ");
+                string loadFile = Console.ReadLine();
+                Console.WriteLine();
+                string[] lines = System.IO.File.ReadAllLines(loadFile);
+
+                foreach (string line in lines)
                 {
-                    File.WriteAllLines("myJournal.txt", _entries);
+                    _oldEntries.Add(line);
                 }
             }
 
             // If user chooses 4. Save
             if (user_choice == 4)
             {
-                
-            }
-
-            // If user chooses 5. Quit
-            if (user_choice == 5)
-            {
-                
+                // Ask the user for the name of the file they want to save to
+                Console.Write("What is the name of the text file you want to save? ");
+                string saveFile = Console.ReadLine();
+                Console.WriteLine();
+                using (StreamWriter outputFile = new StreamWriter(saveFile))
+                {
+                    foreach (var a in _oldEntries)
+                    {
+                        outputFile.WriteLine(a);
+                    }
+                    foreach (var i in _entries)
+                    {
+                        outputFile.WriteLine("Date: {0}, Prompt: {1}, Response: {2}", i._dateOfEntry, i._prompt, i._response);
+                        outputFile.WriteLine();
+                    }
+                }
             }
         }
 
@@ -133,7 +154,6 @@ class Program
             entry._dateOfEntry = entryDate;
             entry._prompt = entryPrompt;
             entry._response = entryResponse;
-
             return entry;
         }      
     }
