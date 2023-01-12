@@ -15,17 +15,17 @@ class Program
 
         // Welcome the user
         Console.WriteLine();
-        Console.WriteLine("Welcome to the Journal Program!");
+        Console.WriteLine("Welcome to the Journal Writing Program!");
 
         // Menu Items
         while (user_choice != 5)
         {
             Console.WriteLine("Please select one of the following choices:");
-            Console.WriteLine("1. Write");
-            Console.WriteLine("2. Display");
-            Console.WriteLine("3. Load");
-            Console.WriteLine("4. Save");
-            Console.WriteLine("5. Quit");
+            Console.WriteLine("1. Write a new Journal Entry");
+            Console.WriteLine("2. Display my Entries");
+            Console.WriteLine("3. Load a File of Saved Entries");
+            Console.WriteLine("4. Save Current Entries to a File");
+            Console.WriteLine("5. Quit the Program");
             Console.Write("What would you like to do? ");
             string user_input = Console.ReadLine();
             user_choice = int.Parse(user_input);
@@ -34,9 +34,12 @@ class Program
             // If user chooses 1. Write
             if (user_choice == 1)
             {
+                Console.WriteLine("To write a new entry, you can either create your own prompt to respond to, or one will be randomly selected for you to use.");
+                Console.WriteLine("Do you want to write your own prompt (y/n)? ");
+                string user_selection = Console.ReadLine();
+
                 // Generate a Journal Prompt and get the User Response
-                string entryPrompt = PromptGenerator();
-                Console.WriteLine(entryPrompt);
+                string entryPrompt = PromptStatement(user_selection);
                 string entryResponse = UserResponse();
                 string entryDate = GenerateDate();
                 Console.WriteLine();
@@ -67,7 +70,7 @@ class Program
             if (user_choice == 3)
             {
                 // Ask the user for the name of the file they want to load
-                Console.Write("What is the name of the text file you want to load? ");
+                Console.Write("What is the name of the file you want to load? ");
                 string loadFile = Console.ReadLine();
                 Console.WriteLine();
                 // Add user file to a string to be manipulated
@@ -83,7 +86,7 @@ class Program
             if (user_choice == 4)
             {
                 // Ask the user for the name of the file they want to save to
-                Console.Write("What is the name of the text file you want to save? ");
+                Console.Write("What is the name of the file you want to save? ");
                 string saveFile = Console.ReadLine();
                 Console.WriteLine();
                 // Save Old and New Entries to the new file
@@ -103,6 +106,22 @@ class Program
         }
 
         // Functions
+
+        static string PromptStatement(string user_selection)
+        {
+            string entryPrompt = "";
+            if (user_selection == "y" || user_selection == "yes")
+                {
+                    Console.Write("Prompt: ");
+                    entryPrompt = Console.ReadLine();
+                }
+                else
+                {
+                    entryPrompt = PromptGenerator();
+                    Console.WriteLine(entryPrompt);
+                }
+            return entryPrompt;
+        }
 
         static string PromptGenerator()
         {
@@ -130,7 +149,10 @@ class Program
                 "The best part of my day",
                 "Something I have recently learned",
                 "If I could travel into the past...",
-                "If I could do anything, what would I do?"
+                "If I could do anything, what would I do?",
+                "Something inspiring I recently heard",
+                "A recent milestone",
+                "Some challenges I am currently facing"
             };
             // Create a random instance
             Random R = new Random();
