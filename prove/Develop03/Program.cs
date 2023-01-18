@@ -44,7 +44,7 @@ class Program
         // Get the scripture put together with the reference
         string scriptureAndRef = ScriptureWrite(newRef, scriptureText);
         Console.Clear();
-        Console.WriteLine("Press 'Enter' to remove some words from the scripture OR type 'quit' to Exit.");
+        Console.WriteLine("Press 'Enter' to remove some words OR type 'quit' to Exit.");
         Console.WriteLine();
         Console.WriteLine(scriptureAndRef);
         userInput = Console.ReadLine();
@@ -57,7 +57,7 @@ class Program
             {
                 scriptureText = TakeAwayThree(scriptureText);
                 string newScriptureAndRef = ScriptureWrite(newRef, scriptureText);
-                Console.WriteLine("Press 'Enter' to remove some words from the scripture OR type 'quit' to Exit.");
+                Console.WriteLine("Press 'Enter' to remove some words OR type 'quit' to Exit.");
                 Console.WriteLine();
                 Console.WriteLine(newScriptureAndRef);
                 userInput = Console.ReadLine();
