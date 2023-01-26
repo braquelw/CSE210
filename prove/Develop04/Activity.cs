@@ -10,19 +10,6 @@ public class Activity
         _activityDescription = activityDescription;
     }
 
-    public string GetActivityName()
-    {
-        return _activityName;
-    }
-    public string GetActivityDescription()
-    {
-        return _activityDescription;
-    }
-    public int GetActivityDuration()
-    {
-        return _activityDuration;
-    }
-
     public void DisplayStartingMessage()
     {
         Console.WriteLine($"Welcome to the {_activityName} Activity!");
