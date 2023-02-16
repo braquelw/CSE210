@@ -12,7 +12,7 @@ public class OutdoorEvent : Event
 
     public void OutdoorFullDetails()
     {
-        Console.WriteLine($"{GetStandardDetails()}\r\nWeather: {_weather}");
+        Console.WriteLine($"Event Type: Outdoor\r\n{GetStandardDetails()}\r\nWeather: {_weather}");
         Console.WriteLine();
     }
 }

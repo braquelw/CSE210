@@ -78,37 +78,62 @@ class Program
         order3._products.Add(product19);
         order3._products.Add(product20);
 
-        // Customer 1 Details
-        // Total Price
-        order1.DisplayTotalPrice();
-        Console.WriteLine();
-        // Shipping Label
-        order1.GetShippingLabel();
-        Console.WriteLine();
-        // Packing Label
-        order1.GetPackingLabel();
-        Console.WriteLine();
+        // Menu
+        int content = 0;
+        while (content != 4)
+        {
+            Console.WriteLine();
+            Console.WriteLine("What can we do for you?");
+            Console.WriteLine("  1. Get Total Price of an Order");
+            Console.WriteLine("  2. Get Packing Label for an Order");
+            Console.WriteLine("  3. Get Shipping Label of an Order");
+            Console.WriteLine("  4. Quit Program");
+            Console.Write("(please pick one) ");
+            content = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            if (content != 4)
+            {
+                Console.WriteLine($"There are a total of 3 orders.");
+                Console.Write("Which Order # did you want this for? ");
+                int orderNumber = int.Parse(Console.ReadLine());
+                Console.Clear();
+                string order = $"order{orderNumber}";
 
-        // Customer 2 Details
-        // Total Price
-        order2.DisplayTotalPrice();
-        Console.WriteLine();
-        // Shipping Label
-        order2.GetShippingLabel();
-        Console.WriteLine();
-        // Packing Label
-        order2.GetPackingLabel();
-        Console.WriteLine();
-
-        // Customer 3 Details
-        // Total Price
-        order3.DisplayTotalPrice();
-        Console.WriteLine();
-        // Shipping Label
-        order3.GetShippingLabel();
-        Console.WriteLine();
-        // Packing Label
-        order3.GetPackingLabel();
-        Console.WriteLine();
+                // Get what the user asked for
+                if (content == 1) {
+                    if (orderNumber == 1) {
+                        order1.DisplayTotalPrice();
+                    }
+                    else if (orderNumber == 2) {
+                        order2.DisplayTotalPrice();
+                    }
+                    else if (orderNumber == 3) {
+                        order3.DisplayTotalPrice();
+                    }
+                }
+                else if (content == 2) {
+                    if (orderNumber == 1) {
+                        order1.GetPackingLabel();
+                    }
+                    else if (orderNumber == 2) {
+                        order2.GetPackingLabel();
+                    }
+                    else if (orderNumber == 3) {
+                        order3.GetPackingLabel();
+                    }
+                }
+                else if (content == 3) {
+                    if (orderNumber == 1) {
+                        order1.GetShippingLabel();
+                    }
+                    else if (orderNumber == 2) {
+                        order2.GetShippingLabel();
+                    }
+                    else if (orderNumber == 3) {
+                        order3.GetShippingLabel();
+                    }
+                }
+            }
+        }
     }
 }

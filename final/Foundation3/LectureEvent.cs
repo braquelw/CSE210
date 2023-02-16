@@ -14,7 +14,7 @@ public class LectureEvent : Event
 
     public void LectureFullDetails()
     {
-        Console.WriteLine($"{GetStandardDetails()}\r\nSpeaker: {_speakerName}\r\nMax Capacity: {_capacity}");
+        Console.WriteLine($"Event Type: Lecture\r\n{GetStandardDetails()}\r\nSpeaker: {_speakerName}\r\nMax Capacity: {_capacity}");
         Console.WriteLine();
     }
 }

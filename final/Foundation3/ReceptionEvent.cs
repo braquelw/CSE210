@@ -12,7 +12,7 @@ public class ReceptionEvent : Event
 
     public void ReceptionFullDetails()
     {
-        Console.WriteLine($"{GetStandardDetails()}\r\nRSVP: {_rsvpEmail}");
+        Console.WriteLine($"Event Type: Reception\r\n{GetStandardDetails()}\r\nRSVP: {_rsvpEmail}");
         Console.WriteLine();
     }
 }
